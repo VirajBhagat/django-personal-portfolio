@@ -1,0 +1,69 @@
+<html>
+    <head>
+        
+        <style>
+            body{
+                text-align: center;
+            }
+            .photo{
+                display: flex;
+                text-align: center;
+                margin-left: 100px;
+                flex-wrap: wrap;
+            }
+            .courses{
+                margin: 20px;
+                text-align: justify;
+                display: flex;
+                flex-direction: column;                
+            
+            }
+            .line{
+                width: 100%;
+                height: 2px;
+                background-color: rgb(189, 186, 186);
+            }
+            h2{
+                text-align: left;
+            }
+        </style>
+    </head>
+    <body>
+        {% extends 'portfolio/base.html' %}
+
+        {% block content %}
+
+        <h1>Viraj Portfolio</h1>
+
+
+        {% load static %}
+
+        <a href="{% static 'portfolio/resume.pdf' %}">Resume</a>
+        <a href="{% url 'blog:all_blogs' %}">Blog</a>
+        <br>
+
+        <img src="{% static 'portfolio/myPhoto.jpg' %}" height="500" width="500">
+
+        <h3 height="50" width="50">The Viraj Bhagat best coder and best player in pubg with 3 KD</h3>
+
+        <h2>Portfolio</h2>
+        <p class="line"></p>
+        <!-- <a href="">Blog</a> -->
+        <div class="photo">
+            {% for projects in projects %}
+            <div class="courses">
+                <img src="{{ projects.image.url }}" height="250" width="350">
+                <h2>{{ projects.title }}</h2>
+                <p>{{ projects.description }}</p>
+            </div>
+            
+            {% if project.url %}
+
+            {% endif %} 
+            {% endfor %}
+
+            {% endblock %}
+        </div>
+    </body>
+    
+</html>

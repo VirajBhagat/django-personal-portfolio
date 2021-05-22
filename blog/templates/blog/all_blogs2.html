@@ -1,0 +1,80 @@
+<html>
+    <head>
+        <title>Blogs</title>
+        <style>
+            body{
+                font-family: sans-serif;
+                margin: 0;
+            }
+            .Top{
+                margin: 0;
+                font-size: 60px;
+            }
+            .Middle{
+                text-align: center;
+                margin: 0;
+                color: black;
+            }
+            .Main{
+                margin-top: 50px;
+                margin-left: 70px;
+                line-height: 17px;
+            }
+            h2{
+                color: rgb(9, 154, 250);
+                font-size: 27px;
+            }
+            .blog{
+                line-height: 10px;
+            }
+            .first{
+                margin-bottom: 50px;
+            }
+            .second{
+                margin-bottom: 50px;
+            }
+            .third{
+                margin-bottom: 50px;
+            }
+            b{
+                color: rgb(155, 154, 154);
+            }
+            P{
+                font-size: 21px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Viraj Has written {{ blogs.count }} blog{{ blogs.count|pluralize }}</h1>
+
+         Hello Blog
+         {% for blog in blogs %}
+         <a href="{% url 'blog:detail' blog.id %}"><h2>{{ blog.title }}</h2></a>
+         <h5>{{ blog.date|date:'M d Y'|upper }}</h5>
+         <p>{{ blog.description|striptags|truncatechars:100 }}</p>
+         {% endfor %}
+
+
+        <h1 class="Top Middle">Blog</h1>
+        <h2 class="Middle">Viraj was written 3 blogs</h2>
+        <div class="Main text">
+            <div class="first blog">
+                <h2>New Post</h2>
+                <b>JAN 23 2020</b>
+                <p>Hey there!</p>
+            </div>
+            <div class="Second blog">
+                <h2>What's New in Django 3?</h2>
+                <b>JAN 16 2020</b>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit....</p>
+            </div>
+            <div class="Third blog">
+                <h2>Using the Terminal for the First Time</h2>
+                <b>JAN 13 2020</b>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit....</p>
+            </div>
+        </div>
+        
+    </body>
+</html>
+
